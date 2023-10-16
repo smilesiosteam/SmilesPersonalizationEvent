@@ -12,7 +12,7 @@ import SmilesUtilities
 import SmilesBaseMainRequestManager
 
 @objc open class PersonalizationEventHandler: NSObject {
-    public static let shared = PersonalizationEventHandler()
+    @objc public static let shared = PersonalizationEventHandler()
     private var cancellables = Set<AnyCancellable>()
     
     @objc public func registerPersonalizationEvent(
@@ -57,7 +57,7 @@ import SmilesBaseMainRequestManager
         registerPersonalizationEventRequest.recommendationModelEvent = recommendationModelEvent
         registerPersonalizationEventRequest.cuisineName = cuisineName
         registerPersonalizationEventRequest.categoryName = categoryName
-        registerPersonalizationEventRequest.source = source
+        registerPersonalizationEventRequest.source = source ?? "app"
         registerPersonalizationEventRequest.mambaSource = mambaSource
         
         let service = PersonalizationEventRepository(
